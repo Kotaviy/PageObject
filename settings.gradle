@@ -1,0 +1,4 @@
+rootProject.name = 'PageObject'
+include 'src:page'
+findProject(':src:page')?.name = 'page'
+
