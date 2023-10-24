@@ -21,24 +21,21 @@ public class DashboardPage {
         header.shouldBe(visible);
     }
 
-    //метод получения баланса карты по её номеру
-//    public int getCardBalance(DataHelper.CardInfo cardInfo) {
-//        var text = cards.findBy(Condition.text(cardInfo.getCardNumber().substring(15))).getText();
-//        return extractBalance(text);
-//    }
+    public int getCardBalance(DataHelper.CardInfo cardInfo) {
+        var text = cards.findBy(Condition.text(cardInfo.getCardNumber().substring(15))).getText();
+        return extractBalance(text);
+    }
 
-//метод получения баланса карты по индексу
     public int getCardBalance(int index) {
         var text = cards.get(index).getText();
         return extractBalance(text);
     }
-//    метод получения баланса карты по атрибуту
+
     public TransferPage selectCardToTransfer(DataHelper.CardInfo cardInfo) {
         cards.findBy(attribute("data-test-id", cardInfo.getTestId())).$("button").click();
         return new TransferPage();
     }
 
-    //преобразователь строки в число
     private int extractBalance(String text) {
         var start = text.indexOf(startBalance);
         var end = text.indexOf(endBalance);
